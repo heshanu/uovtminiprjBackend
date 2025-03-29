@@ -6,5 +6,24 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mongoose": "^8.12.1"
-  }
+  },
+  "name": "uniminprjbackend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heshanu/uovtminiprjBackend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heshanu/uovtminiprjBackend/issues"
+  },
+  "homepage": "https://github.com/heshanu/uovtminiprjBackend#readme",
+  "description": ""
 }
