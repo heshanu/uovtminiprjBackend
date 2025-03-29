@@ -6,15 +6,15 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
-
+require('dotenv').config();
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
 
 
 // Connect to MongoDB
-
-const uri = 'mongodb+srv://heshanu97:test@cluster0.f6bnq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const databaseUrl = process.env.DATABASE_URL;
+const uri = databaseUrl;
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
@@ -122,3 +122,5 @@ app.get('/all', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+module.exports=express
