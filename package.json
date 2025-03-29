@@ -5,6 +5,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "http": "^0.0.1-security",
     "mongoose": "^8.12.1",
     "netlify-cli": "^19.1.4",
     "netlify-lambda": "^2.0.16",

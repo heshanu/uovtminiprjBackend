@@ -4,9 +4,7 @@ const bcrypt = require('bcryptjs');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
-const serverless = require("serverless-http");
 const PORT = 3000;
-const router = express.Router();
 
 require('dotenv').config();
 // Middleware
@@ -121,9 +119,9 @@ app.get('/all', async (req, res) => {
   });
 
 // Start the Server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port`,process.env.PORT);
 });
 
-app.use("/.netlify/functions/app", router);
-module.exports.handler = serverless(app);
+// Export the Express API
+module.exports = app
