@@ -1,8 +1,0 @@
-[build]
-  functions = "netlify/functions"
-
-[dev]
-  command = "npm run dev" # Command to run your app locally
-  targetPort = 3000 # The port your app runs on locally
-  publish = "index.js" # The folder with the static content
-  autoLaunch = false
