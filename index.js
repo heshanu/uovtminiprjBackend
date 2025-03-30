@@ -118,6 +118,14 @@ app.get('/all', async (req, res) => {
     }
   });
 
+  app.get('/hello',async(req,res)=>{
+    try {
+      res.send("Hello World");
+    } catch (error) {
+      res.status(500).send('Error retrieving customers');
+    }
+  })
+
 // Start the Server
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port`,process.env.PORT);
