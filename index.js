@@ -9,7 +9,10 @@ const PORT = 3000;
 require('dotenv').config();
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  origin: '*', // Allow any domain
+  credentials: false // Disable credentials if allowing all origins
+}));
 
 
 // Connect to MongoDB
