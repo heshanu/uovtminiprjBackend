@@ -9,7 +9,12 @@ const PORT = 3000;
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  origin: function (origin, callback) {
+    callback(null, true); // Allow any origin
+  },
+  credentials: false // Disable credentials if allowing all
+}));
 
 
 // Connect to MongoDB
