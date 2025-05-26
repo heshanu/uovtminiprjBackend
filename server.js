@@ -4,8 +4,8 @@ const bcrypt = require('bcryptjs');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
-const PORT = process.env.PORT || 3000;
-require('dotenv').config();
+const PORT = 3000; // Define the port number
+
 // Middleware
 app.use(bodyParser.json());
 app.use(cors({
@@ -14,7 +14,6 @@ app.use(cors({
 }));
 
 // Connect to MongoDB
-const databaseUrl = process.env.DATABASE_URL;
 const uri = 'mongodb+srv://heshanu97:test@cluster0.f6bnq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -133,18 +132,7 @@ app.get('/getCustomerById/:id', async (req, res) => {
   }
 });
 
-  app.get('/hello',async(req,res)=>{
-    try {
-      res.send("Hello World");
-    } catch (error) {
-      res.status(500).send('Error retrieving customers');
-    }
-  })
-
 // Start the Server
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port`,process.env.PORT);
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
-
-// Export the Express API
-module.exports = app
