@@ -108,7 +108,7 @@ app.post('/createCustomer', async (req, res) => {
 app.get('/allCustomers', async (req, res) => {
   try {
     const customers = await Customer.find();
-    res.status(200).json(customers);
+    res.status(201).json(customers);
   } catch (error) {
     console.error('Error retrieving customers:', error);
     res.status(500).send('Error retrieving customers');
