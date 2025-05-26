@@ -132,6 +132,45 @@ app.get('/getCustomerById/:id', async (req, res) => {
   }
 });
 
+// Update totalExpense and/or status for a customer
+app.patch('/updateCustomer/:id', async (req, res) => {
+  try {
+    const customerId = req.params.id;
+    const { totalExpense, status } = req.body;
+
+    // Prepare the update object
+    const updateData = {};
+    if (typeof totalExpense !== 'undefined') {
+      updateData.totalExpense = totalExpense;
+    }
+    if (typeof status !== 'undefined') {
+      updateData.status = status;
+    }
+
+    // Validate that at least one field is provided
+    if (Object.keys(updateData).length === 0) {
+      return res.status(400).json({ error: 'No fields to update provided' });
+    }
+
+    // Find the customer by ID and update the fields
+    const updatedCustomer = await Customer.findByIdAndUpdate(
+      customerId,
+      updateData,
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedCustomer) {
+      return res.status(404).json({ error: 'Customer not found' });
+    }
+
+    res.status(200).json(updatedCustomer);
+  } catch (error) {
+    console.error('Error updating customer:', error);
+    res.status(500).json({ error: 'Error updating customer' });
+  }
+});
+
+
 // Start the Server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
