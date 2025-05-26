@@ -97,7 +97,7 @@ app.post('/createCustomer', async (req, res) => {
     const { name, age, address, travelMode, accomadation, foodList, foodListOption, beverageList, startDate, endDate } = req.body;
     const newCustomer = new Customer({ name, age, address, travelMode, accomadation, foodList, foodListOption, beverageList, startDate, endDate });
     await newCustomer.save();
-    res.status(201).send('Customer registered successfully');
+    res.status(201).json({ message: 'Customer registered successfully' });
   } catch (error) {
     console.error('Error registering customer:', error);
     res.status(500).send('Error registering customer');
